@@ -107,6 +107,8 @@ app.get('/callback', function(req, res) {
 
 
       } else {
+
+          console.log(response.error);
         res.redirect('/#' +
           querystring.stringify({
             error: 'invalid_token'
