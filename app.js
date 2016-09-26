@@ -36,7 +36,7 @@ app.get('/login', function(req, res) {
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
-  res.redirect('https://www.googleapis.com/auth/calendar?' +
+  res.redirect('https://accounts.google.com/o/oauth2/v2/auth?' +
     querystring.stringify({
       client_id: client_id,
       redirect_uri: redirect_uri,
