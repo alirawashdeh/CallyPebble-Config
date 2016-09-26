@@ -71,9 +71,9 @@ app.get('/callback', function(req, res) {
         redirect_uri: redirect_uri,
         grant_type: 'authorization_code'
       },
-      headers: {
-        'Authorization': 'Bearer ' + code
-      },
+      // headers: {
+      //   'Authorization': 'Bearer ' + code
+      // },
       json: true
     };
 
