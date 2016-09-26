@@ -55,12 +55,12 @@ app.get('/callback', function(req, res) {
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
-  if (state === null || state !== storedState) {
-    res.redirect('/#' +
-      querystring.stringify({
-        error: 'state_mismatch'
-      }));
-  } else {
+  // if (state === null || state !== storedState) {
+  //   res.redirect('/#' +
+  //     querystring.stringify({
+  //       error: 'state_mismatch'
+  //     }));
+  // } else {
     res.clearCookie(stateKey);
     var authOptions = {
       url: 'https://www.googleapis.com/oauth2/v4/token',
@@ -113,7 +113,7 @@ app.get('/callback', function(req, res) {
           }));
       }
     });
-  }
+  // }
 });
 
 app.listen(app.get('port'), function() {
