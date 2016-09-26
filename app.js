@@ -40,7 +40,7 @@ app.get('/login', function(req, res) {
     querystring.stringify({
       client_id: client_id,
       redirect_uri: redirect_uri,
-      response_type: token,
+      response_type: 'token',
       scope: 'https://www.googleapis.com/auth/calendar',
       state: state
     }));
