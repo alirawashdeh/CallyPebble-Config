@@ -109,12 +109,13 @@ app.get('/callback', function(req, res) {
           }));
 
 
-      } else {
-        res.redirect('/#' +
-          querystring.stringify({
-            error: 'invalid_token'
-          }));
       }
+      // else {
+      //   res.redirect('/#' +
+      //     querystring.stringify({
+      //       error: 'invalid_token'
+      //     }));
+      // }
     });
   // }
 });
