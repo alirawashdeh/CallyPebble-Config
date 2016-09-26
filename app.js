@@ -72,7 +72,7 @@ app.get('/callback', function(req, res) {
         grant_type: 'authorization_code'
       },
       headers: {
-        'Authorization': 'Bearer ' + code)
+        'Authorization': 'Bearer ' + code
       },
       json: true
     };
