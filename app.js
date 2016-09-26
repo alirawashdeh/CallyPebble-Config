@@ -63,7 +63,7 @@ app.get('/callback', function(req, res) {
   } else {
     res.clearCookie(stateKey);
     var authOptions = {
-      url: 'https://www.wunderlist.com/oauth/access_token',
+      url: 'https://www.googleapis.com/oauth2/v4/token',
       form: {
         code: code,
         client_id: client_id,
@@ -84,9 +84,9 @@ app.get('/callback', function(req, res) {
             refresh_token = body.refresh_token;
 
         var options = {
-          url: 'https://a.wunderlist.com/v1/me',
+          url: 'https://www.googleapis.com/calendar/v3/users/me/calendarList',
           headers: {
-          'X-Access-Token': + access_token,
+          'Authorization': + 'Bearer ' + access_token,
           'X-Client-ID': authOptions.form.client_id
         },
           json: true
