@@ -109,7 +109,7 @@
                 $(data.items).each(function(index, item) {
                   var li = document.createElement('li');
                   li.innerHTML = item.summary;
-                  li.setAttribute('value',item.etag);
+                  li.setAttribute('value',item.id);
                   li.setAttribute('class','list-group-item')
                   $('#list').append(li);
                 });
@@ -146,13 +146,13 @@
 
           document.getElementById('finish').addEventListener('click', function() {
 
-            var list_id = $( ".ui-selected").attr('value');
-            var list_name = $( ".ui-selected").html();
+            var calendar_id = $( ".ui-selected").attr('value');
+            var calendar_name = $( ".ui-selected").html();
             var config = {
               'access_token': params.access_token,
               'client_id': params.client_id,
-              'list_id' : list_id,
-              'list_name' : list_name
+              'list_id' : calendar_id,
+              'list_name' : calendar_name
             };
 
             var return_to = getQueryParam('return_to', 'pebblejs://close#');
