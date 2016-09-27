@@ -81,10 +81,10 @@
         $('#login').hide();
         $('#loggedin').show();
 
-        var header        = { "X-Access-Token": access_token, "X-Client-ID": client_id };
+        var header        = { "Authorization": "Bearer " + access_token, "X-Client-ID": client_id };
         $.ajax(
           {
-            url:     "https://a.wunderlist.com/api/v1/lists",
+            url:     "https://www.googleapis.com/calendar/v3/users/me/calendarList",
             dataType:    "json",
             contentType: "application/json",
             method:  "get",

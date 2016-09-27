@@ -51,8 +51,6 @@ app.get('/callback', function(req, res) {
   // your application requests refresh and access tokens
   // after checking the state parameter
 
-  console.log(req.query);
-
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
@@ -78,7 +76,7 @@ app.get('/callback', function(req, res) {
       // },
       json: true
     };
-    console.log(authOptions);
+
 
     request.post(authOptions, function(error, response, body) {
       if (!error && response.statusCode === 200) {
@@ -86,19 +84,19 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
-        var options = {
-          url: 'https://www.googleapis.com/calendar/v3/users/me/calendarList',
-          headers: {
-          'Authorization': + 'Bearer ' + access_token,
-          'X-Client-ID': authOptions.form.client_id
-        },
-          json: true
-        };
-
-        // use the access token to access the Wunderlist Web API
-        request.get(options, function(error, response, body) {
-          console.log(body);
-        });
+        // var options = {
+        //   url: 'https://www.googleapis.com/calendar/v3/users/me/calendarList',
+        //   headers: {
+        //   'Authorization': + 'Bearer ' + access_token,
+        //   'X-Client-ID': authOptions.form.client_id
+        // },
+        //   json: true
+        // };
+        //
+        // // use the access token to access the Wunderlist Web API
+        // request.get(options, function(error, response, body) {
+        //   console.log(body);
+        // });
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('/#' +
@@ -110,12 +108,12 @@ app.get('/callback', function(req, res) {
 
 
       }
-      // else {
-      //   res.redirect('/#' +
-      //     querystring.stringify({
-      //       error: 'invalid_token'
-      //     }));
-      // }
+      else {
+        res.redirect('/#' +
+          querystring.stringify({
+            error: 'invalid_token'
+          }));
+      }
     });
   // }
 });
