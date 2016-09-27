@@ -106,7 +106,7 @@
 
                   document.getElementById('finish').disabled = true;
 
-                $(data).each(function(index, item) {
+                $(data.items).each(function(index, item) {
                   var li = document.createElement('li');
                   li.innerHTML = item.title;
                   li.setAttribute('value',item.id);
